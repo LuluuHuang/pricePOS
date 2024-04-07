@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藥單</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="./index.html" class="nav-link active" aria-current="page">查價格</a></li>
+                <li class="nav-item"><a href="./prescriptions.html" class="nav-link">算藥單</a></li>
+                <li class="nav-item"><a href="./edit.html" class="nav-link">編輯</a></li>
+                <li class="nav-item"><a href="./add.html" class="nav-link">新增</a></li>
+            </ul>
+        </header>
+    </div>
+    
+    <div id="app" class="container">
+        品項：<input type="text" v-model="searchInput">
+        <input type="button" value="查詢" @click="search">
+        <ul v-if="searchResult">
+            <li v-for="item in searchResult">{{ item.price }} / {{ item.weight }}</li>
+        </ul>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
