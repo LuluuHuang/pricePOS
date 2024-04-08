@@ -36,8 +36,13 @@
                 <input type="button" value="確定" @click="calculate">
             </div>
             <div class="col-6">
-                <p>藥單內容</p>
-                <p>總金額</p>
+                <div>藥單內容</div>
+                <div v-if="allItems" v-for="item in allItems">
+                    <ul>
+                        <li>{{item.searchResult}}{{item.inputWeightNum}}{{item.selectWeight}}{{item.totalPrice}}</li>
+                    </ul>
+                </div>
+                <p>總金額{{}}</p>
             </div>
         </div>
 

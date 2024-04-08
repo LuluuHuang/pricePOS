@@ -7,7 +7,8 @@ const app = Vue.createApp({
             inputWeightNum:'',
             selectWeight:'斤',
             totalPrice:'',
-            allItems:[]
+            allItems:[],
+            payMoney:[],
         }
     },
     methods: {
@@ -19,6 +20,19 @@ const app = Vue.createApp({
             console.log(this.selectWeight);
             this.totalPrice = this.inputWeightNum*(this.searchResult.prices.find(item => item.weight === this.selectWeight).price);
             console.log(this.totalPrice);
+            const newItem = {
+                searchResult: this.searchResult.name,
+                inputWeightNum: this.inputWeightNum,
+                selectWeight: this.selectWeight,
+                totalPrice: this.totalPrice,
+            };
+
+            // 将该对象添加到 allItems 数组中
+            this.allItems.push(newItem);
+            this.payMoney.push(this.totalPrice);
+            console.log(this.allItems);
+            console.log(this.totalPrice);
+            console.log(this.payMoney);
         }
     },
     mounted() {
